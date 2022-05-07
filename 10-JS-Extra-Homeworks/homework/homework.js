@@ -10,6 +10,9 @@ function deObjetoAmatriz(objeto){
       C: 3
     }) ➞ [["D", 1], ["B", 2], ["C", 3]]*/
   //Escribe tu código aquí
+  var array = []
+  array = Object.entries(objeto)
+  return array
 }
 
 
@@ -18,6 +21,15 @@ function numberOfCharacters(string) {
   //en formato par clave-valor.
   //Ej: Recibe ---> "adsjfdsfsfjsdjfhacabcsbajda" || Devuelve ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 } 
   //Escribe tu código aquí
+  var contador = {}
+  for (var i of string){
+    if (contador[i]){
+      contador[i]++
+    } else {
+      contador[i] = 1
+    }
+  }
+  return contador
 }
 
 
@@ -26,6 +38,19 @@ function capToFront(s) {
   //al principio de la palabra.
   //Ejemplo: soyHENRY -> HENRYsoy
   //Escribe tu código aquí
+  var string = []
+  
+  var start = 0
+
+  for (let i = 0; i < s.length; i++){
+    if (s[i]=== s[i].toUpperCase()){
+      string.splice(start, 0, s[i]);
+      start ++
+    } else {
+      string.push(s[i])
+    }
+  }
+  return string.join("")
 }
 
 
@@ -35,6 +60,12 @@ function asAmirror(str) {
   //pero con cada una de sus palabras invertidas, como si fuera un espejo.
   //Ej: Recibe ---> "The Henry Challenge is close!" || Devuelve ---> "ehT yrneH egnellahC si !esolc"
   //Escribe tu código aquí
+  var string = []
+
+  for ( let i = 0; i < str.length; i++){
+    string.unshift(str[i])
+  }
+  return string.join('').split(' ').reverse().join(' ')
 } 
 
 
@@ -43,6 +74,15 @@ function capicua(numero){
   //La misma debe retornar: "Es capicua" si el número se número que se lee igual de 
   //izquierda a derecha que de derecha a izquierda. Caso contrario retorna "No es capicua"
   //Escribe tu código aquí
+
+  var alreves = numero.toString().split('').reverse('').join('');
+  //numero = 150, toString para volverlo "150", split para volverlo 1 5 0, reverse para volverlo 0 5 1, join para unirlo de nuevo
+  alreves = parseInt(alreves);
+  //        con este metodo se vuelve a pasar de string a número "150" = 150
+  if (numero === alreves){
+    return "Es capicua"
+  }
+  return "No es capicua"
 }
 
 
@@ -50,6 +90,8 @@ function deleteAbc(cadena){
   //Define una función que elimine las letras "a", "b" y "c" de la cadena dada 
   //y devuelva la versión modificada o la misma cadena, en caso de contener dichas letras.
   //Escribe tu código aquí
+  nuevaCadena = cadena.split('').filter(x => x!== "a" && x!== "b" && x!== "c")
+  return nuevaCadena.join('')
 }
 
 
@@ -57,6 +99,8 @@ function sortArray(arr) {
   //La función recibe una matriz de strings. Ordena la matriz en orden creciente de longitudes de cadena
   //Ej: Recibe ---> ["You", "are", "beautiful", "looking"] || Devuelve ---> [“You", "are", "looking", "beautiful"]
   //Escribe tu código aquí
+  nuevoArray = arr.sort((a, b) => a.length - b.length)
+  return nuevoArray
 }
 
 
@@ -66,6 +110,8 @@ function buscoInterseccion(arreglo1, arreglo2){
   //Si no tienen elementos en común, retornar un arreglo vacío.
   //Aclaración: los arreglos no necesariamente tienen la misma longitud
   //Escribe tu código aquí  
+  arrayInterseccion = arreglo1.filter( value => arreglo2.includes(value));
+  return arrayInterseccion
 }
 
 
